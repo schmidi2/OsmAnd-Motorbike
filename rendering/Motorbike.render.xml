@@ -515,12 +515,12 @@
 			<switch nameTag="ref">
 				<case minzoom="8" tag="highway" value="motorway"/>
 				<case minzoom="8" tag="highway" value="trunk"/>
-				<case minzoom="10" tag="highway" value="primary"/>
-				<case minzoom="10" tag="area:highway" value="primary"/>
-				<case minzoom="12" tag="highway" value="secondary"/>
-				<case minzoom="12" tag="area:highway" value="secondary"/>
-				<case minzoom="13" tag="highway" value="tertiary"/>
-				<case minzoom="13" tag="area:highway" value="tertiary"/>
+				<case minzoom="16" tag="highway" value="primary"/>
+				<case minzoom="16" tag="area:highway" value="primary"/>
+				<case minzoom="16" tag="highway" value="secondary"/>
+				<case minzoom="16" tag="area:highway" value="secondary"/>
+				<case minzoom="16" tag="highway" value="tertiary"/>
+				<case minzoom="16" tag="area:highway" value="tertiary"/>
 				<apply_if nameTag="ref" textMinDistance="150" textColor="#ffffff" textSize="12" textBold="true" textOrder="10">
 					<case textLength="1" textShield="tru_shield1"/>
 					<case textLength="2" textShield="tru_shield2"/>
