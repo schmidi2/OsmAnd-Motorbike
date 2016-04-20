@@ -562,7 +562,7 @@
 				<apply_if engine_v1="true" textDy="9"/>
 				<apply_if nightMode="true" textHaloRadius="$textHaloRadiusNight" textColor="#ffcaad" textHaloColor="#cc641500"/>
 			</switch>
-			<switch minzoom="13" textBold="true">
+			<switch minzoom="16" textBold="true">
 				<switch textColor="#ffffff" textOnPath="true" nameTag="">
 					<case tag="highway" value="motorway" textHaloColor="$motorwayRoadColor" textOrder="6"/>
 					<case tag="highway" value="motorway_link" textHaloColor="$motorwayRoadColor" textOrder="7"/>
