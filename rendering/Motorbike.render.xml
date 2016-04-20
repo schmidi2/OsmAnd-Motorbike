@@ -116,7 +116,7 @@
 	<renderingConstant name="buildingColorNight" value="#3f3c40"/>
 	<renderingConstant name="waterColorDay" value="#41cad3"/>
 	<renderingConstant name="waterColorNight" value="#26415d"/>
-	<renderingConstant name="woodColorDay" value="#67bd67"/>
+	<renderingConstant name="woodColorDay" value="#cae8ca"/>
 	<renderingConstant name="woodColorNight" value="#1a2116"/>
 	<renderingConstant name="parkColorDay" value="#b0b6fdb6"/>
 	<renderingConstant name="parkColorNight" value="#2b301b"/>
