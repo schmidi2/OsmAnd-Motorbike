@@ -81,9 +81,9 @@
 		<case nightMode="true" attrColorValue="#701111"/>
 		<case attrColorValue="#ff7800"/>
 	</renderingAttribute>
-	<renderingConstant name="residentialRoadDayColor" value="#777777"/>
-	<renderingConstant name="residentialRoadLowZoomDayColor" value="#888888"/>
-	<renderingConstant name="residentialRoadLowZoomDayColor2" value="#aaaaaa"/>
+	<renderingConstant name="residentialRoadDayColor" value="#ff0000"/>
+	<renderingConstant name="residentialRoadLowZoomDayColor" value="#ff0000"/>
+	<renderingConstant name="residentialRoadLowZoomDayColor2" value="#ff0000"/>
 	<renderingConstant name="residentialRoadNightColor" value="#7e3b3b"/>
 	<renderingConstant name="residentialRoadLowZoomNightColor" value="#5d2a2a"/>
 	<renderingAttribute name="serviceRoadLowZoomColor">
