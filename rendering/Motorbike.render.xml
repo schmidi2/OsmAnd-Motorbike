@@ -345,11 +345,6 @@
 			<switch appMode="car">
 				<case layer="1" tag="railway" value="" order="71"/>
 				<case tag="railway" value="" order="36"/>
-				<switch layer="-1">
-					<case tag="public_transport" value="platform" order="10"/>
-					<case tag="public_transport" value="station" order="10"/>
-					<case tag="railway" value="platform" order="10"/>
-				</switch>
 				<case tag="public_transport" value="" order="36"/>
 			</switch>
 			<case tag="railway" value="" order="58">
@@ -647,11 +642,6 @@
 					<case tag="highway" value="footway" textOrder="15"/>
 					<case tag="area:highway" value="footway" textOrder="15"/>
 					<case tag="highway" value="steps" textOrder="15"/>
-					<case tag="railway" value="rail" textOrder="13"/>
-					<case tag="railway" value="tram" textOrder="15"/>
-					<case tag="railway" value="light_rail" textOrder="15"/>
-					<case tag="railway" value="monorail" textOrder="16"/>
-					<case tag="railway" value="funicular" textOrder="16"/>
 					<apply_if nameTag="" minzoom="14">
 						<case maxzoom="14" textSize="12"/>
 						<case maxzoom="15" textSize="13"/>
@@ -879,55 +869,9 @@
 			</switch>
 
 			<switch textColor="#6666ff" textDy="9" textWrapWidth="25" nameTag="">
-				<case minzoom="14" tag="railway" value="station" textBold="true" textOrder="5">
-					<apply_if maxzoom="14" textSize="12"/>
-					<apply_if minzoom="15" textSize="13"/>
-				</case>
-				<case minzoom="15" tag="amenity" value="bus_station" textSize="13" textBold="true" textOrder="5"/>
 				<case minzoom="16" tag="amenity" value="ferry_terminal" textSize="13" textBold="true" textOrder="5"/>
-				<case minzoom="14" tag="public_transport" value="station" textBold="true">
-					<apply_if maxzoom="14" textSize="12"/>
-					<apply_if minzoom="15" textSize="13"/>
-				</case>
-				<case minzoom="14" tag="railway" value="halt" textSize="12" textOrder="10"/>
-				<case minzoom="15" tag="railway" value="tram_stop" textSize="12"/>
-				<case minzoom="15" tag="highway" value="bus_stop" textSize="13" textBold="true"/>
-				<case minzoom="15" tag="public_transport" value="platform" textSize="13" textBold="true"/>
-				<case minzoom="14" maxzoom="14" tag="railway" value="platform" textSize="12" textBold="true"/>
-				<case minzoom="15" tag="railway" value="platform" textSize="13" textBold="true"/>
 				<case minzoom="14" tag="aerialway" value="station" textSize="12"/>
 				<apply_if nightMode="true" textColor="#d4d4ff" textHaloColor="#aa2f4371"/>
-			</switch>
-			<switch>
-				<case minzoom="17" tag="railway" value="subway_entrance" textSize="13" nameTag=""/>
-				<apply textColor="$subwayTextDefaultColor" textWrapWidth="25" textHaloRadius="$textHaloRadiusDay" textBold="true" textOrder="1"/>
-				<apply_if engine_v1="true" textDy="7"/>
-				<apply_if additional="color_red" textColor="$subwayTextRedColor"/>
-				<apply_if additional="color_brown" textColor="$subwayTextBrownColor"/>
-				<apply_if additional="color_orange" textColor="$subwayTextOrangeColor"/>
-				<apply_if additional="color_darkyellow" textColor="$subwayTextDarkyellowColor"/>
-				<apply_if additional="color_yellow" textColor="$subwayTextYellowColor"/>
-				<apply_if additional="color_lightgreen" textColor="$subwayTextLightgreenColor"/>
-				<apply_if additional="color_green" textColor="$subwayTextGreenColor"/>
-				<apply_if additional="color_lightblue" textColor="$subwayTextLightblueColor"/>
-				<apply_if additional="color_blue" textColor="$subwayTextBlueColor"/>
-				<apply_if additional="color_purple" textColor="$subwayTextPurpleColor"/>
-				<apply_if additional="color_gray" textColor="$subwayTextGrayColor"/>
-				<apply_if additional="color_black" textColor="$subwayTextBlackColor"/>
-				<apply_if nightMode="true" textHaloColor="$subwayTextDefaultHaloColorNight" textHaloRadius="$textHaloRadiusNight">
-					<case additional="color_red" textHaloColor="#66590000"/>
-					<case additional="color_brown" textHaloColor="#664e2f00"/>
-					<case additional="color_orange" textHaloColor="#88794b00"/>
-					<case additional="color_darkyellow" textHaloColor="#885a5800"/>
-					<case additional="color_yellow" textHaloColor="#885a5800"/>
-					<case additional="color_lightgreen" textHaloColor="#66265900"/>
-					<case additional="color_green" textHaloColor="#88024e00"/>
-					<case additional="color_lightblue" textHaloColor="#8800444c"/>
-					<case additional="color_blue" textHaloColor="#66000f7a"/>
-					<case additional="color_purple" textHaloColor="#6659005d"/>
-					<case additional="color_gray" textHaloColor="#88484848"/>
-					<case additional="color_black" textHaloColor="#88000000"/>
-				</apply_if>
 			</switch>
 
 			<switch minzoom="13" textSize="12" textColor="#000000" textWrapWidth="20" textOrder="200">
@@ -1031,95 +975,18 @@
 			<apply_if nightMode="true" shield="gray_blue_square_shield"/>
 		</switch>
 
-		<case minzoom="14" tag="public_transport" value="station" icon="amenity_bus_station" shield="white_blue_round_shield" iconVisibleSize="10" iconOrder="72">
-			<apply_if nightMode="true" shield="gray_blue_round_shield"/>
-		</case>
 		<case minzoom="15" tag="amenity" value="ferry_terminal" icon="amenity_ferry_terminal" shield="white_blue_square_shield" iconOrder="72">
 			<apply_if nightMode="true" shield="gray_blue_square_shield"/>
 		</case>
-<!--		<filter minzoom="16" maxzoom="16" icon="highway_bus_stop_small" tag="highway" value="bus_stop" iconVisibleSize="6"/>
-		<filter minzoom="16" maxzoom="16" icon="highway_bus_stop_small" tag="public_transport" value="platform" iconVisibleSize="6"/>
-		<filter minzoom="16" icon="railway_level_crossing" tag="railway" value="level_crossing"/>
-		<filter minzoom="13" maxzoom="14" icon="halt_small" tag="aerialway" value="station"/>
-		<filter minzoom="15" icon="railway_station_small" tag="aerialway" value="station"/>-->
 
-		<case minzoom="16" tag="railway" value="subway_entrance" shield="subway_entrance_shield" icon="railway_subway_entrance" iconOrder="55">
-			<case additional="color_red" icon="railway_subway_entrance_red"/>
-			<case additional="color_brown" icon="railway_subway_entrance_brown"/>
-			<case additional="color_orange" icon="railway_subway_entrance_orange"/>
-			<case additional="color_darkyellow" icon="railway_subway_entrance_darkyellow"/>
-			<case additional="color_yellow" icon="railway_subway_entrance_yellow"/>
-			<case additional="color_lightgreen" icon="railway_subway_entrance_lightgreen"/>
-			<case additional="color_green" icon="railway_subway_entrance_green"/>
-			<case additional="color_lightblue" icon="railway_subway_entrance_lightblue"/>
-			<case additional="color_blue" icon="railway_subway_entrance_blue"/>
-			<case additional="color_purple" icon="railway_subway_entrance_purple"/>
-			<case additional="color_gray" icon="railway_subway_entrance_gray"/>
-			<case additional="color_black" icon="railway_subway_entrance_black"/>
-			<apply_if maxzoom="16" iconVisibleSize="22" intersectionSizeFactor="1.3"/>
-		</case>
-
-		<switch minzoom="15">
-			<case tag="highway" value="bus_stop"/>
-			<case tag="public_transport" value="platform" additional="bus=yes"/>
-			<case tag="public_transport" value="platform" additional="trolleybus=yes"/>
-			<apply_if maxzoom="16" icon="highway_bus_stop_small" iconVisibleSize="15" iconOrder="65"/>
-			<apply_if minzoom="17" icon="highway_bus_stop" shield="white_blue_square_shield" iconVisibleSize="16" iconOrder="82">
-				<apply_if nightMode="true" shield="gray_blue_square_shield"/>
-			</apply_if>
-		</switch>
 		<switch shield="white_blue_square_shield">
-			<case minzoom="17" tag="public_transport" value="platform" icon="highway_bus_stop"/>
 			<case minzoom="17" tag="traffic_calming" value="bump" icon="traffic_calming_bump" iconVisibleSize="16"/>
 			<apply_if nightMode="true" shield="gray_blue_square_shield"/>
 		</switch>
 
-		<case minzoom="14" tag="amenity" value="bus_station" icon="amenity_bus_station" shield="white_red_round_shield" iconVisibleSize="10" iconOrder="72">
-			<apply_if nightMode="true" shield="gray_red_round_shield"/>
-		</case>
-		<case minzoom="14" tag="public_transport" value="station" icon="amenity_bus_station" shield="white_blue_round_shield" iconVisibleSize="10" iconOrder="72">
-			<apply_if nightMode="true" shield="gray_blue_round_shield"/>
-		</case>
-
 		<case minzoom="14" maxzoom="14" tag="railway" value="station" icon="railway_station_small" iconVisibleSize="4"/>
-		<switch minzoom="15" iconVisibleSize="7">
-			<case tag="railway" value="station">
-				<switch>
-					<case additional="route=subway"/>
-					<case additional="station=subway"/>
-					<apply icon="railway_station_subway" shield="white_blue_arc_shield">
-						<apply_if nightMode="true" shield="gray_blue_arc_shield"/>
-					</apply>
-				</switch>
-				<case icon="railway_station" shield="white_blue_square_shield" iconVisibleSize="8" iconOrder="82">
-					<apply_if nightMode="true" shield="gray_blue_square_shield"/>
-				</case>
-			</case>
-			<case tag="public_transport" value="platform" icon="amenity_bus_station" shield="white_blue_square_shield">
-				<switch>
-					<case additional="train=yes"/>
-					<case additional="tram=yes"/>
-					<case additional="light_rail=yes"/>
-					<apply icon="railway_station"/>
-				</switch>
-				<apply_if nightMode="true" shield="gray_blue_square_shield"/>
-			</case>
-		</switch>
 
 		<switch iconOrder="83">
-			<case minzoom="13" tag="railway" value="halt">
-				<case maxzoom="14" icon="halt_small" iconVisibleSize="2"/>
-				<case minzoom="15" icon="halt" shield="white_blue_square_small_shield"/>
-			</case>
-			<case minzoom="14" tag="railway" value="tram_stop">
-				<case maxzoom="14" icon="halt_small" iconVisibleSize="2"/>
-				<case minzoom="15" maxzoom="16" icon="railway_station_small" iconVisibleSize="5"/>
-				<case minzoom="17" icon="railway_tram_stop" shield="white_blue_square_shield">
-					<apply_if nightMode="true" shield="gray_blue_square_shield"/>
-				</case>
-			</case>
-			<case minzoom="15" tag="railway" value="level_crossing" icon="railway_level_crossing"/>
-
 			<case minzoom="13" tag="aerialway" value="station">
 				<case maxzoom="14" icon="aerialway_station_small" iconVisibleSize="3"/>
 				<case minzoom="15" icon="aerialway_station" shield="white_blue_round_shield">
