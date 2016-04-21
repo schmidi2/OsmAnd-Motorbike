@@ -259,7 +259,6 @@
 			<case tag="place" value=""/>
 			<case tag="public_transport" value=""/>
 			<case tag="highway" value="ford"/>
-			<case tag="traffic_calming" value=""/>
 			<case tag="noexit" value=""/>
 			<case tag="flood_prone" value=""/>
 			<case tag="barrier" value=""/>
@@ -937,7 +936,6 @@
 			<case additional="file_has_waypoints=true" icon="osmand_waypoint" shield="waypoint_shield" iconVisibleSize="5" iconOrder="127"/>
 		</case>
 
-		<case minzoom="16" tag="highway" value="traffic_signals" icon="highway_traffic_signals" shield="traffic_signals_shield" iconVisibleSize="10" iconOrder="71"/>
 		<case minzoom="15" tag="highway" value="mini_roundabout" icon="highway_mini_roundabout" shield="miniroundabout_anticlockwise_shield">
 			<apply_if nightMode="true" shield=""/>
 		</case>
@@ -945,10 +943,6 @@
 			<apply_if nightMode="true" shield=""/>
 		</case>
 		<case minzoom="16" tag="noexit" value="yes" icon="highway_noexit" iconVisibleSize="7"/>
-		<case minzoom="17" tag="highway" value="crossing" icon="highway_crossing" iconVisibleSize="8" shield="highway_crossing_shield">
-			<case additional="crossing=uncontrolled" icon="highway_crossing_uncontrolled"/>
-			<case additional="crossing=traffic_signals" icon_2="highway_crossing_traffic_signals"/>
-		</case>
 		<case minzoom="17" tag="highway" value="steps" icon="highway_steps" shield="highway_steps_shield" iconVisibleSize="8"/>
 		<switch shield="white_blue_square_shield" iconOrder="81">
 			<case minzoom="14" tag="amenity" value="fuel" icon="amenity_fuel" iconVisibleSize="6"/>
@@ -978,11 +972,6 @@
 		<case minzoom="15" tag="amenity" value="ferry_terminal" icon="amenity_ferry_terminal" shield="white_blue_square_shield" iconOrder="72">
 			<apply_if nightMode="true" shield="gray_blue_square_shield"/>
 		</case>
-
-		<switch shield="white_blue_square_shield">
-			<case minzoom="17" tag="traffic_calming" value="bump" icon="traffic_calming_bump" iconVisibleSize="16"/>
-			<apply_if nightMode="true" shield="gray_blue_square_shield"/>
-		</switch>
 
 		<case minzoom="14" maxzoom="14" tag="railway" value="station" icon="railway_station_small" iconVisibleSize="4"/>
 
