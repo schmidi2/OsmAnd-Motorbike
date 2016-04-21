@@ -7,7 +7,6 @@
 	<renderingProperty attr="noPolygons" name="Hide polygons (exc.buildings)" description="Make all areal land features on map transparent" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideWoodScrubs" name="Hide wood and scrubs" description="Hide wood and scrubs" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideBuildings" name="Hide buildings" description="Hide buildings" type="boolean" possibleValues="" category="hide"/>
-	<renderingProperty attr="hideNonVehicleHighways" name="Hide non-vehicle highways" description="Hide non-vehicle highways" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideAccess" name="Hide access restrictions" description="Hide access type" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideText" name="Hide text" description="Hide text" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="appMode" name="Rendering mode" description="Map optimization for respective User Profile" type="string" possibleValues="browse map,motorcycle"/>
@@ -281,7 +280,6 @@
 			<case tag="geocache" value=""/>
 			<case tag="office" value=""/>
 			<case tag="power" value=""/>
-			<case tag="highway" value="steps"/>
 			<case tag="osmand" value="file_waypoint"/>
 		</switch>
 
@@ -313,7 +311,6 @@
 			<case tag="area:highway" value="services"/>
 			<case tag="highway" value="rest_area"/>
 			<case tag="area:highway" value="residential"/>
-			<case tag="area:highway" value="footway"/>
 			<case tag="area:highway" value="track"/>
 			<case tag="landuse" value="military" order="8"/>
 			<case tag="military" value="danger_area" order="8"/>
@@ -348,7 +345,6 @@
 				<apply_if layer="-1" order="-1"/>
 			</case>
 			<case tag="public_transport" value="" order="58"/>
-			<case tag="highway" value="steps"/>
 			<!-- Over buildings -->
 			<case tag="aerialway" value="" order="96"/>
 			<case tag="aerialway" value="station" order="96"/>
@@ -434,30 +430,13 @@
 				<apply_if layer="1" order="75"/>
 			</case>
 
-			<case tag="highway" value="cycleway" order="39">
-				<apply_if layer="1" order="70"/>
-			</case>
-
 			<case tag="highway" value="ford" order="80"/>
 			<case tag="highway" value="rest_area" order="80"/>
 
 			<case tag="highway" value="track" order="37">
 				<apply_if layer="1" order="90"/>
 			</case>
-			<case tag="highway" value="path" order="37">
-				<apply_if layer="1" order="90"/>
-			</case>
-			<case tag="highway" value="footway" order="37">
-				<apply_if layer="1" order="90"/>
-			</case>
-			<case tag="highway" value="steps" order="38">
-				<apply_if layer="1" order="91"/>
-			</case>
 
-			<case tag="highway" value="bridleway" order="37">
-				<apply_if layer="1" order="90"/>
-			</case>
-			
 			<case tag="natural" value="coastline_broken" order="35"/>
 			<case tag="natural" value="coastline_line" order="35"/>
 			<case tag="route" value="ferry" order="35"/>
@@ -624,11 +603,6 @@
 				<switch>
 					<case tag="highway" value="track" textOrder="9"/>
 					<case tag="area:highway" value="track" textOrder="9"/>
-					<case tag="highway" value="path" textOrder="9"/>
-					<case tag="highway" value="cycleway" textOrder="14"/>
-					<case tag="highway" value="footway" textOrder="15"/>
-					<case tag="area:highway" value="footway" textOrder="15"/>
-					<case tag="highway" value="steps" textOrder="15"/>
 					<apply_if nameTag="" minzoom="14">
 						<case maxzoom="14" textSize="12"/>
 						<case maxzoom="15" textSize="13"/>
@@ -931,7 +905,6 @@
 			<apply_if nightMode="true" shield=""/>
 		</case>
 		<case minzoom="16" tag="noexit" value="yes" icon="highway_noexit" iconVisibleSize="7"/>
-		<case minzoom="17" tag="highway" value="steps" icon="highway_steps" shield="highway_steps_shield" iconVisibleSize="8"/>
 		<switch shield="white_blue_square_shield" iconOrder="81">
 			<case minzoom="14" tag="amenity" value="fuel" icon="amenity_fuel" iconVisibleSize="6"/>
 			<case minzoom="15" tag="amenity" value="charging_station" icon="amenity_charging_station"/>
@@ -1334,13 +1307,6 @@
 				<apply_if nightMode="true" color="#4f2215"/>
 			</apply_if>
 		</switch>
-		<switch hideNonVehicleHighways="false" minzoom="16">
-			<case tag="area:highway" value="pedestrian"/>
-			<case tag="area:highway" value="footway"/>
-			<apply color="#879bef">
-				<apply_if nightMode="true" color="#683500"/>
-			</apply>
-		</switch>
 		<switch minzoom="16">
 			<case tag="area:highway" value="track" color="#6b6b6b"/>
 			<apply_if nightMode="true" color="#2e2e2e"/>
@@ -1705,108 +1671,6 @@
 			</apply_if>
 			<apply_if hideAccess="false" additional="access=no" disable="true"/>
 			<apply_if hideAccess="false" additional="access=private" disable="true"/>
-			<apply_if minzoom="16"> <!-- for new OpenGL engine only -->
-				<apply_if additional="oneway=yes" pathIcon="oneway_blue" pathIconStep="70"/>
-				<apply additional="oneway=-1" pathIcon="oneway_blue_reverse" pathIconStep="70"/>
-			</apply_if>
-		</switch>
-
-		<switch hideNonVehicleHighways="false">
-			<switch>
-				<case minzoom="12" tag="highway" value="pedestrian"/>
-				<apply color="$nonMotoVehicleRoadDayColor" cap="ROUND">
-					<case moreDetailed="true" maxzoom="12" strokeWidth="1"/>
-					<case moreDetailed="true" maxzoom="13" strokeWidth="1.5"/>
-					<apply_if minzoom="14">
-						<case maxzoom="14" strokeWidth="3"/>
-						<case maxzoom="15" strokeWidth="4.5"/>
-						<case maxzoom="16" strokeWidth="7.5"/>
-						<case maxzoom="17" strokeWidth="12"/>
-						<case minzoom="18" strokeWidth="17"/>
-					</apply_if>
-				</apply>
-				<apply_if nightMode="true" color="$nonMotoVehicleRoadNightColor"/>
-				<apply_if layer="-1" pathEffect="4_4" cap="BUTT"/>
-				<apply_if layer="1" minzoom="14" color_0="$bridgeDayColor" cap="SQUARE" cap_0="BUTT">
-					<case maxzoom="14" strokeWidth_0="4:2"/>
-					<case maxzoom="15" strokeWidth_0="6:2"/>
-					<case maxzoom="16" strokeWidth_0="8.5:2"/>
-					<case maxzoom="17" strokeWidth_0="13.5:2"/>
-					<case maxzoom="18" strokeWidth_0="20:2"/>
-					<case minzoom="19" strokeWidth_0="20:2"/>
-					<apply_if nightMode="true" color_0="$bridgeNightColor"/>
-				</apply_if>
-				<apply_if hideAccess="false" additional="access=no" disable="true"/>
-				<apply_if hideAccess="false" additional="access=private" disable="true"/>
-			</switch>
-
-			<switch>
-				<case minzoom="12" tag="highway" value="footway">
-					<case moreDetailed="true">
-						<case maxzoom="12" strokeWidth="0.5"/>
-						<case maxzoom="13" strokeWidth="0.8"/>
-						<case maxzoom="14" strokeWidth="1"/>
-					</case>
-					<apply_if minzoom="15">
-						<case maxzoom="15" strokeWidth="1.2" pathEffect="4_2"/>
-						<case maxzoom="16" strokeWidth="1.4" pathEffect="5_2.5"/>
-						<case maxzoom="17" strokeWidth="1.7" pathEffect="7_3"/>
-						<case minzoom="18" strokeWidth="2.5" pathEffect="10_4"/>
-					</apply_if>
-				</case>
-
-				<case minzoom="12" tag="highway" value="cycleway">
-					<case moreDetailed="true" maxzoom="12" strokeWidth="0.8"/>
-					<case moreDetailed="true" maxzoom="13" strokeWidth="1.2" pathEffect="9_1.5"/>
-					<apply_if minzoom="14">
-						<case maxzoom="14" strokeWidth="1.5" pathEffect="14_2.5"/>
-						<case maxzoom="15" strokeWidth="2" pathEffect="16_3"/>
-						<case maxzoom="16" strokeWidth="2.5" pathEffect="19_4"/>
-						<case maxzoom="17" strokeWidth="3.6" pathEffect="25_5.5"/>
-						<case minzoom="18" strokeWidth="4.5" pathEffect="33_7"/>
-					</apply_if>
-				</case>
-
-				<case minzoom="12" tag="highway" value="path">
-					<case moreDetailed="true" maxzoom="12" strokeWidth="0.5" pathEffect="0.4_0.4"/>
-					<case moreDetailed="true" maxzoom="13" strokeWidth="0.8" pathEffect="0.8_0.8"/>
-					<apply_if minzoom="14">
-						<case maxzoom="14" strokeWidth="1" pathEffect="1_1"/>
-						<case maxzoom="15" strokeWidth="1.3" pathEffect="1.3_1.3"/>
-						<case maxzoom="16" strokeWidth="1.6" pathEffect="1.6_1.6"/>
-						<case maxzoom="17" strokeWidth="2" pathEffect="2_2"/>
-						<case minzoom="18" strokeWidth="3" pathEffect="3_3"/>
-					</apply_if>
-				</case>
-
-				<case minzoom="15" tag="highway" value="steps" pathEffect="1_2">
-					<case maxzoom="15" strokeWidth="3"/>
-					<case maxzoom="16" strokeWidth="5"/>
-					<case maxzoom="17" strokeWidth="7.5"/>
-					<case minzoom="18" strokeWidth="9"/>
-				</case>
-				<apply_if layer="1" minzoom="16">
-					<case minzoom="16" color__1="#333333" color_0="#ffffff">
-						<case maxzoom="16" strokeWidth__1="4:3" strokeWidth_0="3:1"/>
-						<case maxzoom="17" strokeWidth__1="4:4" strokeWidth_0="3:2"/>
-						<case minzoom="18" strokeWidth__1="4:7" strokeWidth_0="4:3"/>
-						<apply_if nightMode="true" color__1="#dddddd" color_0="#333333"/>
-					</case>
-				</apply_if>
-				<apply_if layer="-1" minzoom="16" pathEffect__1="6_4">
-					<case minzoom="16" color__1="#333333" color_0="#ffffff">
-						<case maxzoom="16" strokeWidth__1="4:3" strokeWidth_0="3:1"/>
-						<case maxzoom="17" strokeWidth__1="4:4" strokeWidth_0="3:2"/>
-						<case minzoom="18" strokeWidth__1="4:7" strokeWidth_0="4:3"/>
-						<apply_if nightMode="true" color__1="#dddddd" color_0="#333333"/>
-					</case>
-				</apply_if>
-				<apply color="$nonMotoVehicleRoadDayColor"/>
-				<apply_if nightMode="true" color="$nonMotoVehicleRoadNightColor"/>
-				<apply_if hideAccess="false" additional="access=no" disable="true"/>
-				<apply_if hideAccess="false" additional="access=private" disable="true"/>
-			</switch>
-			<apply_if noPolygons="true" shadowRadius=":1" shadowColor="#999999"/>
 			<apply_if minzoom="16"> <!-- for new OpenGL engine only -->
 				<apply_if additional="oneway=yes" pathIcon="oneway_blue" pathIconStep="70"/>
 				<apply additional="oneway=-1" pathIcon="oneway_blue_reverse" pathIconStep="70"/>
