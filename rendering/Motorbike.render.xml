@@ -685,14 +685,6 @@
 				<apply_if nightMode="true" textColor="#cccccc" textHaloColor="#aa444444"/>
 			</switch>
 
-			<switch textSize="12" textColor="#0066ff" textWrapWidth="20">
-				<case minzoom="17" tag="amenity" value="fuel"/>
-				<case minzoom="17" tag="amenity" value="parking"/>
-				<case minzoom="17" tag="amenity" value="charging_station"/>
-				<case minzoom="17" tag="amenity" value="taxi"/>
-				<apply_if engine_v1="true" textDy="7"/>
-				<apply_if nightMode="true" textColor="#bff8ff" textHaloColor="#882a3738"/>
-			</switch>
 			<switch minzoom="16">
 				<case tag="military" value="barracks"/>
 				<case tag="military" value="bunker"/>
@@ -799,16 +791,12 @@
 				<case minzoom="15" tag="waterway" value="dock" textSize="12" textOnPath="true" textOrder="15"/>
 				<case minzoom="15" tag="waterway" value="ditch" textSize="12" textOnPath="true" textOrder="15"/>
 				<case minzoom="15" tag="waterway" value="drain" textSize="12" textOnPath="true" textOrder="15"/>
-				<case minzoom="16" tag="natural" value="spring" textSize="12" textDy="7" textWrapWidth="20" textOrder="15"/>
 
 				<case minzoom="13" tag="landuse" value="water" textSize="12" textWrapWidth="20"/>
 				<case minzoom="13" tag="landuse" value="reservoir" textSize="12" textWrapWidth="20"/>
 				<case minzoom="13" tag="landuse" value="basin" textSize="12" textWrapWidth="20"/>
-				<case minzoom="17" tag="leisure" value="swimming_pool" textSize="12" textWrapWidth="20"/>
 
 				<case minzoom="3" tag="ferry_route" value="ferry" textSize="14" textColor="#9d6c9d" textWrapWidth="35" nameTag="ferry_route_ref"/>
-				<case minzoom="14" tag="leisure" value="marina" textSize="12" textColor="#0000ff" textWrapWidth="30"/>
-				<apply_if nightMode="true" textColor="#90e4ff" textHaloColor="#aa003153"/>
 			</switch>
 			<!-- Aeroway -->
 			<switch minzoom="11" tag="aeroway" value="aerodrome" nameTag="">
@@ -845,9 +833,6 @@
 		<case minzoom="16" tag="noexit" value="yes" icon="highway_noexit" iconVisibleSize="7"/>
 		<switch shield="white_blue_square_shield" iconOrder="81">
 			<case minzoom="14" tag="amenity" value="fuel" icon="amenity_fuel" iconVisibleSize="6"/>
-			<case minzoom="15" tag="amenity" value="charging_station" icon="amenity_charging_station"/>
-			<case minzoom="16" tag="amenity" value="taxi" icon="amenity_taxi"/>
-			<apply_if nightMode="true" shield="gray_blue_square_shield"/>
 		</switch>
 		<switch minzoom="16" tag="amenity" value="parking" icon="amenity_parking" shield="white_blue_square_shield" iconVisibleSize="32" iconOrder="80">
 			<case additional="parking=multi-storey" icon="amenity_parking_multi_storey">
@@ -1045,10 +1030,6 @@
 			<apply_if nightMode="true" shield="gray_gray_square_shield"/>
 		</case>
 
-		<case minzoom="14" tag="natural" value="spring" icon="natural_spring" shield="white_blue_square_shield">
-			<apply_if nightMode="true" shield="gray_blue_square_shield"/>
-		</case>
-
 		<switch>
 			<case tag="osmand_place_basemap" value="city"/>
 			<case tag="place" value="city"/>
@@ -1198,7 +1179,6 @@
 				<case minzoom="7" tag="landuse" value="reservoir"/>
 				<case minzoom="7" tag="landuse" value="water"/>
 				<case minzoom="10" tag="landuse" value="basin"/>
-				<case minzoom="15" tag="leisure" value="swimming_pool" color_2="#7479ec" strokeWidth_2=":1"/>
 				<apply color="$waterColorDay">
 					<apply_if nightMode="true" color="$waterColorNight"/>
 				</apply>
