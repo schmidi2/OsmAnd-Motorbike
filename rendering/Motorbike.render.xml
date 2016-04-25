@@ -65,35 +65,36 @@
 	</renderingAttribute>
 	<renderingAttribute name="trunkRoadColor">
 		<case nightMode="true" attrColorValue="#850000"/>
-		<case attrColorValue="#ff0000"/>
+		<case attrColorValue="#a71818"/>
 	</renderingAttribute>
 	<renderingAttribute name="primaryRoadColor">
 		<case nightMode="true" attrColorValue="#700000"/>
-		<case attrColorValue="#ff5400"/>
+		<case attrColorValue="#ff0000"/>
 	</renderingAttribute>
-	<renderingConstant name="primaryRoadAreaNightColor" value="#571300"/>
 	<renderingAttribute name="secondaryRoadColor">
 		<case nightMode="true" attrColorValue="#700000"/>
 		<case attrColorValue="#ff5400"/>
 	</renderingAttribute>
 	<renderingAttribute name="tertiaryRoadColor">
 		<case nightMode="true" attrColorValue="#701111"/>
-		<case attrColorValue="#ff7800"/>
+		<case attrColorValue="#ff5500"/>
 	</renderingAttribute>
-	<renderingConstant name="residentialRoadDayColor" value="#ff0000"/>
-	<renderingConstant name="residentialRoadLowZoomDayColor" value="#ff0000"/>
-	<renderingConstant name="residentialRoadLowZoomDayColor2" value="#ff0000"/>
-	<renderingConstant name="residentialRoadNightColor" value="#7e3b3b"/>
-	<renderingConstant name="residentialRoadLowZoomNightColor" value="#5d2a2a"/>
-	<renderingAttribute name="serviceRoadLowZoomColor">
-		<case nightMode="true" attrColorValue="#6f4141"/>
+	<renderingAttribute name="unclassifiedRoadColor">
+		<case nightMode="true" attrColorValue="#701111"/>
+		<case attrColorValue="#ff7800"/>
+	</renderingAttribute>	
+	<renderingAttribute name="residentialRoadColor">
+		<case nightMode="true" attrColorValue="#701111"/>
 		<case attrColorValue="#aaaaaa"/>
 	</renderingAttribute>
-
-	<renderingConstant name="serviceRoadDayColor" value="#888888"/>
-	<renderingConstant name="serviceRoadNightColor" value="#6f4141"/>
-	<renderingConstant name="trackDayColor" value="#555555"/>
-	<renderingConstant name="trackNightColor" value="#665555"/>
+	<renderingAttribute name="serviceRoadColor">
+		<case nightMode="true" attrColorValue="#6f4141"/>
+		<case attrColorValue="#dddddd"/>
+	</renderingAttribute>
+	<renderingAttribute name="trackColor">
+		<case nightMode="true" attrColorValue="#665555"/>
+		<case attrColorValue="#996633"/>
+	</renderingAttribute>
 
 	<renderingConstant name="nonMotoVehicleRoadDayColor" value="#4862d2"/> <!--bd5007-->
 	<renderingConstant name="nonMotoVehicleRoadNightColor" value="#994b16"/>
@@ -133,6 +134,7 @@
 	</renderingAttribute>
 	<renderingConstant name="barrierMinZoom" value="17"/>
 
+	<!-- BEGIN: For GPX tracks only, file_trackline -->
 	<renderingAttribute name="whiteColor">
 		<case attrColorValue="#88ffffff"/>
 	</renderingAttribute>
@@ -182,7 +184,8 @@
 		<case nightMode="true" attrColorValue="#aa666666"/>
 		<case attrColorValue="#aa000000"/>
 	</renderingAttribute>
-
+	<!-- END: For GPX tracks only, file_trackline -->
+	
 	<renderingConstant name="textHaloRadiusDay" value=":1"/>
 	<renderingConstant name="textHaloRadiusNight" value=":2"/>
 
@@ -1201,21 +1204,21 @@
 		<!-- Polygonal highways -->
 		<switch>
 			<case minzoom="15" tag="area:highway" value="primary" color="#ffa352"/>
-			<apply_if nightMode="true" color="$primaryRoadAreaNightColor"/>
+			<apply_if nightMode="true" color="$primaryRoadColor"/>
 		</switch>
 		<switch>
 			<case minzoom="15" tag="area:highway" value="secondary" color="#ffa352"/>
-			<apply_if nightMode="true" color="$primaryRoadAreaNightColor"/>
+			<apply_if nightMode="true" color="$primaryRoadColor"/>
 		</switch>
 		<switch>
 			<case minzoom="15" tag="area:highway" value="tertiary" color="#ffa352"/>
-			<apply_if nightMode="true" color="$primaryRoadAreaNightColor"/>
+			<apply_if nightMode="true" color="$primaryRoadColor"/>
 		</switch>
 		<switch minzoom="16" color="#7d7d7d">
 			<case tag="area:highway" value="road"/>
 			<case tag="area:highway" value="unclassified"/>
 			<case tag="area:highway" value="residential"/>
-			<apply_if nightMode="true" color="$primaryRoadAreaNightColor"/>
+			<apply_if nightMode="true" color="$primaryRoadColor"/>
 		</switch>
 		<switch minzoom="16">
 			<case tag="area:highway" value="service"/>
@@ -1425,6 +1428,7 @@
 			</switch>
 
 			<switch minzoom="10">
+				<case tag="highway" value="unclassified"/>
 				<case tag="highway" value="tertiary"/>
 				<case tag="highway" value="tertiary_link"/>
 				<apply color="$tertiaryRoadColor"/>
@@ -1458,29 +1462,27 @@
 				</apply_if>
 			</switch>
 
-			<switch>
-				<case tag="highway" value="road"/>
+			<switch minzoom="10">
 				<case tag="highway" value="unclassified"/>
+				<apply color="$unclassifiedRoadColor"/>
+			</switch>
+
+			
+			<switch minzoom="12">
+				<case tag="highway" value="road"/>
 				<case tag="highway" value="residential"/>
 				<case tag="highway" value="living_street"/>
-				<apply color="$residentialRoadDayColor"/>
+				<apply color="$residentialRoadColor"/>
 				<apply cap="ROUND">
-					<apply_if moreDetailed="true" minzoom="12" maxzoom="12" strokeWidth="2" color="$residentialRoadLowZoomDayColor2"/>
-					<apply_if minzoom="13" maxzoom="13" strokeWidth="2.5" color="$residentialRoadLowZoomDayColor2"/>
-					<apply_if nightMode="true" color="$residentialRoadLowZoomNightColor">
-						<apply_if moreDetailed="true" minzoom="12" maxzoom="12" strokeWidth="2"/>
-						<apply_if minzoom="13" maxzoom="13" strokeWidth="2.5"/>
-					</apply_if>
-					<apply_if minzoom="14">
-						<case maxzoom="14" strokeWidth="1.7:1.7" color="$residentialRoadLowZoomDayColor2"/>
-						<case maxzoom="15" strokeWidth="2.5:2.5" color="$residentialRoadLowZoomDayColor"/>
+					<apply_if minzoom="12">
+						<case maxzoom="12" strokeWidth="2"/>
+						<case maxzoom="13" strokeWidth="2.5"/>
+						<case maxzoom="14" strokeWidth="1.7:1.7"/>
+						<case maxzoom="15" strokeWidth="2.5:2.5"/>
 						<case maxzoom="16" strokeWidth="4.5:4.5"/>
 						<case maxzoom="17" strokeWidth="6:6"/>
 						<case maxzoom="18" strokeWidth="9:9"/>
 						<case minzoom="19" strokeWidth="10.5:10.5"/>
-						<apply_if nightMode="true" color="$residentialRoadNightColor">
-							<apply_if minzoom="13" maxzoom="14" color="$residentialRoadLowZoomNightColor"/>
-						</apply_if>
 					</apply_if>
 				</apply>
 				<apply_if layer="-1" pathEffect="4_4" cap="BUTT"/>
@@ -1508,14 +1510,14 @@
 				</apply_if>
 			</switch>
 
-			<switch>
+			<switch minzoom="12">
 				<case tag="highway" value="service"/>
 				<case tag="highway" value="services"/>
 				<case tag="highway" value="rest_area"/>
-				<apply minzoom="12" color="$serviceRoadDayColor" cap="ROUND">
-					<case maxzoom="12" strokeWidth="0.4" color="$serviceRoadLowZoomColor"/>
-					<case maxzoom="13" strokeWidth="0.6" color="$serviceRoadLowZoomColor"/>
-					<case maxzoom="14" strokeWidth="1:1" color="$serviceRoadLowZoomColor"/>
+				<apply minzoom="12" color="$serviceRoadColor" cap="ROUND">
+					<case maxzoom="12" strokeWidth="0.4"/>
+					<case maxzoom="13" strokeWidth="0.6"/>
+					<case maxzoom="14" strokeWidth="1:1"/>
 					<case maxzoom="15" strokeWidth="1.5:1.5"/>
 					<case maxzoom="16" strokeWidth="2.5:2.5"/>
 					<case maxzoom="17" strokeWidth="4:4"/>
@@ -1546,7 +1548,6 @@
 					<case minzoom="18" strokeWidth_0="7:8.5"/>
 					<apply_if nightMode="true" color_0="$bridgeNightColor"/>
 				</apply_if>
-				<apply_if nightMode="true" color="$serviceRoadNightColor"/>
 				<apply_if hideAccess="false">
 					<switch minzoom="15">
 						<case additional="access=no"/>
@@ -1571,8 +1572,7 @@
 				<case maxzoom="17" strokeWidth="3" pathEffect="11_5.5"/>
 				<case minzoom="18" strokeWidth="5" pathEffect="15_7.5"/>
 			</case>
-			<apply_if hideWoodScrubs="false" color="$trackDayColor"/>
-			<apply_if nightMode="true" color="$trackNightColor" shadowRadius="0"/>
+			<apply_if hideWoodScrubs="false" color="$trackColor"/>
 			<apply_if layer="1" minzoom="15" color__1="#333333" color_0="#ffffff">
 				<case maxzoom="15" strokeWidth__1="4:4" strokeWidth_0="4"/>
 				<case maxzoom="16" strokeWidth__1="4:5" strokeWidth_0="4:1"/>
