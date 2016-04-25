@@ -133,68 +133,6 @@
 	</renderingAttribute>
 	<renderingConstant name="barrierMinZoom" value="17"/>
 
-	<renderingConstant name="subwayLineDefaultColorDay" value="#7b0000"/>
-	<renderingConstant name="subwayLineDefaultColorNight" value="#7b0000"/>
-
-	<renderingConstant name="subwayRedColorDay" value="#ff0000"/>
-	<renderingConstant name="subwayBlueColorDay" value="#4e4eff"/>
-	<renderingConstant name="subwayPurpleColorDay" value="#a71de1"/>
-	<renderingConstant name="subwayLightblueColorNight" value="#7fe5ff"/>
-
-	<renderingAttribute name="subwayTextDefaultColor">
-		<case nightMode="true" attrColorValue="#f7dede"/>
-		<case attrColorValue="#7b0000"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextRedColor">
-		<case nightMode="true" attrColorValue="#ffaaaa"/>
-		<case attrColorValue="#ff0000"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextBrownColor">
-		<case nightMode="true" attrColorValue="#e0c59c"/>
-		<case attrColorValue="#7e4a00"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextOrangeColor">
-		<case nightMode="true" attrColorValue="#ffd796"/>
-		<case attrColorValue="#b75200"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextDarkyellowColor">
-		<case nightMode="true" attrColorValue="#d6d466"/>
-		<case attrColorValue="#756b00"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextYellowColor">
-		<case nightMode="true" attrColorValue="#fffc79"/>
-		<case attrColorValue="#756b00"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextLightgreenColor">
-		<case nightMode="true" attrColorValue="#caffa3"/>
-		<case attrColorValue="#377500"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextGreenColor">
-		<case nightMode="true" attrColorValue="#25e61e"/>
-		<case attrColorValue="#006020"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextLightblueColor">
-		<case nightMode="true" attrColorValue="#7fe5ff"/>
-		<case attrColorValue="#00a7ba"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextBlueColor">
-		<case nightMode="true" attrColorValue="#b5beff"/>
-		<case attrColorValue="#4e4eff"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextPurpleColor">
-		<case nightMode="true" attrColorValue="#fdc9ff"/>
-		<case attrColorValue="#a71de1"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextGrayColor">
-		<case nightMode="true" attrColorValue="#dddddd"/>
-		<case attrColorValue="#595959"/>
-	</renderingAttribute>
-	<renderingAttribute name="subwayTextBlackColor">
-		<case nightMode="true" attrColorValue="#ffffff"/>
-		<case attrColorValue="#000000"/>
-	</renderingAttribute>
-	<renderingConstant name="subwayTextDefaultHaloColorNight" value="#667b0000"/>
-
 	<renderingAttribute name="whiteColor">
 		<case attrColorValue="#88ffffff"/>
 	</renderingAttribute>
