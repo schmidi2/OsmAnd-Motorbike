@@ -1,11 +1,10 @@
 # OsmAnd-Motorbike
 OsmAnd customizations for Motorbike use.
 
-Optimized for the Panasonic Toughpad JT-B1.
-
-Should work on all Android deviceses.
-
-Does not work on iOS currently.
+* Optimized for the Panasonic Toughpad JT-B1.
+* Should work on all Android devices with GPS.
+* Does not work on iOS currently.
+* This repo shall be a pull request to the original OsmAnd project one day.
 
 
 **_This software is currently in alpha state and therefore cannot yust be installed and used. Help and ideas are welcome._**
@@ -24,6 +23,8 @@ Does not work on iOS currently.
 
 
 **routing/Motorbike.routing.xml**
+* Routing profile for Motorbike.
+* Option "Find the most exciting winding roads".
 * Penalties for uninteresting roads like straight roads or roads with a very low speed limit. 
   Dont penalty motorways in general, because a straight motorways is still better than a straight primary road.
 * When a calculated route is left, recalculate without forcing to turn and without "turning" over a service road. 
