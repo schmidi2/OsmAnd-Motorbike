@@ -5,7 +5,6 @@
 	<renderingProperty attr="contourLines" name="Show contour lines" description="Select minimum zoom level to display in map if available. Separate contour file may be needed." type="string" possibleValues="16,15,14,13,12,11" defaultValueDescription="default" category="details"/>
 	<renderingProperty attr="noPolygons" name="Hide polygons (exc.buildings)" description="Make all areal land features on map transparent" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideWoodScrubs" name="Hide wood and scrubs" description="Hide wood and scrubs" type="boolean" possibleValues="" category="hide"/>
-	<renderingProperty attr="hideBuildings" name="Hide buildings" description="Hide buildings" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideAccess" name="Hide access restrictions" description="Hide access type" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideText" name="Hide text" description="Hide text" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="appMode" name="Rendering mode" description="Map optimization for respective User Profile" type="string" possibleValues="browse map,motorcycle"/>
@@ -1057,33 +1056,6 @@
 	</point>
 
 	<polygon>
-		<switch hideBuildings="false">
-			<case minzoom="16" color="$buildingColorDay" tag="building" value="" strokeWidth_2="0.4" color_2="#000000">
-				<apply_if nightMode="true" color="$buildingColorNight" color_2="#aaaaaa"/>
-			</case>
-			<switch minzoom="16">
-				<case tag="building" value="place_of_worship"/>
-				<case tag="building" value="basilica"/>
-				<case tag="building" value="bell_tower"/>
-				<case tag="building" value="castle_tower"/>
-				<apply color="#bbbbbb" color_2="#c0611e" strokeWidth_2="1.3">
-					<apply_if nightMode="true" color="#4b5257" color_2="#d9bd21"/>
-				</apply>
-			</switch>
-			<case minzoom="15" maxzoom="15" tag="building" value="" color="$buildingColorDay">
-				<apply_if nightMode="true" color="$buildingColorNight"/>
-			</case>
-<!--
-			<groupFilter minzoom="16">
-				<filter additional="abandoned=yes" color_2="#000000" strokeWidth_2="1" pathEffect_2="9_3"/>
-				<filter additional="ruins=yes" color_2="#000000" strokeWidth_2="1" pathEffect_2="9_3"/>
-				<groupFilter nightMode="true">
-					<filter additional="abandoned=yes" color_2="#999999" strokeWidth_2="1" pathEffect_2="9_3"/>
-					<filter additional="ruins=yes" color_2="#999999" strokeWidth_2="1" pathEffect_2="9_3"/>
-				</groupFilter>
-			</groupFilter>-->
-		</switch>
-
 		<switch>
 			<case minzoom="13" tag="tourism" value="attraction"/>
 			<case minzoom="15" tag="amenity" value="place_of_worship"/>
@@ -1230,9 +1202,6 @@
 
 		<case minzoom="13" tag="aeroway" value="apron" color="#e0c4fb">
 			<apply_if nightMode="true" color="#4c3a5d"/>
-		</case>
-		<case hideBuildings="false" minzoom="14" tag="aeroway" value="terminal" color="#b371b7" strokeWidth_2="0.5" color_2="#964ae5">
-			<apply_if nightMode="true" color="#835286" strokeWidth_2="0.5" color_2="#c98df7"/>
 		</case>
 		
 		<case minzoom="14" tag="barrier" value="city_wall">
@@ -1414,7 +1383,6 @@
 				</apply>
 				<apply_if additional="oneway=yes" pathIcon="oneway_blue_big" pathIconStep="70"/>
 				<apply_if additional="oneway=-1" pathIcon="oneway_blue_reverse_big" pathIconStep="70"/>
-	<!--			<groupFilter nightMode="true" hideBuildings="false" shadowRadius=":3" shadowColor="#555555"/>-->
 			</switch>
 
 			<switch minzoom="10">
