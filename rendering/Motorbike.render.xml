@@ -2,6 +2,7 @@
 <!-- xmd5a (xmd5a@yandex.ru) http://forum.openstreetmap.org/viewtopic.php?id=23125 -->
 <!-- Based on LightRS -->
 <renderingStyle name="Motorbike" depends="" defaultColor="#ffffff" version="1">
+	<renderingProperty attr="showOffroad" name="Show Offroad Tracks" description="Show Offroad Tracks" type="boolean" possibleValues="" category="details"/>
 	<renderingProperty attr="contourLines" name="Show contour lines" description="Select minimum zoom level to display in map if available. Separate contour file may be needed." type="string" possibleValues="16,15,14,13,12,11" defaultValueDescription="default" category="details"/>
 	<renderingProperty attr="noPolygons" name="Hide polygons (exc.buildings)" description="Make all areal land features on map transparent" type="boolean" possibleValues="" category="hide"/>
 	<renderingProperty attr="hideWoodScrubs" name="Hide wood and scrubs" description="Hide wood and scrubs" type="boolean" possibleValues="" category="hide"/>
@@ -89,6 +90,10 @@
 		<case attrColorValue="#dddddd"/>
 	</renderingAttribute>
 	<renderingAttribute name="trackColor">
+		<case nightMode="true" attrColorValue="#665555"/>
+		<case attrColorValue="#996633"/>
+	</renderingAttribute>
+	<renderingAttribute name="pathColor">
 		<case nightMode="true" attrColorValue="#665555"/>
 		<case attrColorValue="#996633"/>
 	</renderingAttribute>
@@ -1164,35 +1169,17 @@
 		</switch>
 
 		<!-- Polygonal highways -->
-		<switch>
-			<case minzoom="15" tag="area:highway" value="primary" color="#ffa352"/>
-			<apply_if nightMode="true" color="$primaryRoadColor"/>
-		</switch>
-		<switch>
-			<case minzoom="15" tag="area:highway" value="secondary" color="#ffa352"/>
-			<apply_if nightMode="true" color="$primaryRoadColor"/>
-		</switch>
-		<switch>
-			<case minzoom="15" tag="area:highway" value="tertiary" color="#ffa352"/>
-			<apply_if nightMode="true" color="$primaryRoadColor"/>
-		</switch>
-		<switch minzoom="16" color="#7d7d7d">
-			<case tag="area:highway" value="road"/>
-			<case tag="area:highway" value="unclassified"/>
-			<case tag="area:highway" value="residential"/>
-			<apply_if nightMode="true" color="$primaryRoadColor"/>
-		</switch>
-		<switch minzoom="16">
-			<case tag="area:highway" value="service"/>
-			<case tag="area:highway" value="services"/>
-			<case tag="highway" value="rest_area"/>
-			<apply_if color="#a4a4a4">
-				<apply_if nightMode="true" color="#4f2215"/>
-			</apply_if>
-		</switch>
-		<switch minzoom="16">
-			<case tag="area:highway" value="track" color="#6b6b6b"/>
-			<apply_if nightMode="true" color="#2e2e2e"/>
+		<case minzoom="15" tag="area:highway" value="primary" color="$primaryRoadColor"/>
+		<case minzoom="15" tag="area:highway" value="secondary" color="$secondaryRoadColor"/>
+		<case minzoom="15" tag="area:highway" value="tertiary" color="$tertiaryRoadColor"/>
+		<switch minzoom="12">
+			<case tag="area:highway" value="road" color="$primaryRoadColor"/>
+			<case tag="area:highway" value="unclassified" color="$unclassifiedRoadColor"/>
+			<case tag="area:highway" value="residential" color="$residentialRoadColor"/>
+			<case tag="area:highway" value="service" color="$serviceRoadColor"/>
+			<case tag="area:highway" value="services" color="$serviceRoadColor"/>
+			<case tag="highway" value="rest_area" color="$serviceRoadColor"/>
+			<case tag="area:highway" value="track" color="$trackColor"/>
 		</switch>
 
 
@@ -1520,36 +1507,49 @@
 			</switch>
 		</switch>
 
-		<switch>
-			<case minzoom="12" tag="highway" value="track" color="#555555" pathEffect="4_2">
-				<case maxzoom="12" strokeWidth="0.4" pathEffect="3_1.5"/>
-				<case maxzoom="13" strokeWidth="0.8" pathEffect="4_2"/>
-				<case maxzoom="14" strokeWidth="1.4" pathEffect="5_2.5"/>
-				<case maxzoom="15" strokeWidth="2" pathEffect="7_3.5"/>
-				<case maxzoom="16" strokeWidth="2.5" pathEffect="8_4"/>
-				<case maxzoom="17" strokeWidth="3" pathEffect="11_5.5"/>
-				<case minzoom="18" strokeWidth="5" pathEffect="15_7.5"/>
+		<switch showOffroad="true">
+			<case minzoom="12" tag="highway" value="track" color="$trackColor">
+				<case maxzoom="12" strokeWidth="2"/>
+				<case maxzoom="13" strokeWidth="2.5"/>
+				<case maxzoom="14" strokeWidth="1.7:1.7"/>
+				<case maxzoom="15" strokeWidth="2.5:2.5"/>
+				<case maxzoom="16" strokeWidth="4.5:4.5"/>
+				<case maxzoom="17" strokeWidth="6:6"/>
+				<case maxzoom="18" strokeWidth="9:9"/>
 			</case>
-			<apply_if hideWoodScrubs="false" color="$trackColor"/>
 			<apply_if layer="1" minzoom="15" color__1="#333333" color_0="#ffffff">
 				<case maxzoom="15" strokeWidth__1="4:4" strokeWidth_0="4"/>
 				<case maxzoom="16" strokeWidth__1="4:5" strokeWidth_0="4:1"/>
 				<case maxzoom="17" strokeWidth__1="4:7.5" strokeWidth_0="4:3"/>
 				<case minzoom="18" strokeWidth__1="4:9" strokeWidth_0="4:5"/>
-				<apply_if nightMode="true" color__1="#dddddd" color_0="#333333"/>
 			</apply_if>
 			<apply_if layer="-1" minzoom="15" pathEffect__1="6_4" color__1="#333333" color_0="#ffffff">
 				<case maxzoom="15" strokeWidth__1="4:4" strokeWidth_0="4"/>
 				<case maxzoom="16" strokeWidth__1="4:5" strokeWidth_0="4:1"/>
 				<case maxzoom="17" strokeWidth__1="4:7.5" strokeWidth_0="4:3"/>
 				<case minzoom="18" strokeWidth__1="4:9" strokeWidth_0="4:5"/>
-				<apply_if nightMode="true" color__1="#dddddd" color_0="#333333"/>
 			</apply_if>
-			<apply_if hideAccess="false" additional="access=no" disable="true"/>
-			<apply_if hideAccess="false" additional="access=private" disable="true"/>
-			<apply_if minzoom="16"> <!-- for new OpenGL engine only -->
-				<apply_if additional="oneway=yes" pathIcon="oneway_blue" pathIconStep="70"/>
-				<apply additional="oneway=-1" pathIcon="oneway_blue_reverse" pathIconStep="70"/>
+			
+			<case minzoom="12" tag="highway" value="path" color="$pathColor">
+				<case maxzoom="12" strokeWidth="0.4"/>
+				<case maxzoom="13" strokeWidth="0.8"/>
+				<case maxzoom="14" strokeWidth="1.4"/>
+				<case maxzoom="15" strokeWidth="2"/>
+				<case maxzoom="16" strokeWidth="2.5"/>
+				<case maxzoom="17" strokeWidth="3"/>
+				<case minzoom="18" strokeWidth="5"/>
+			</case>
+			<apply_if layer="1" minzoom="15" color__1="#333333" color_0="#ffffff">
+				<case maxzoom="15" strokeWidth__1="4:4" strokeWidth_0="4"/>
+				<case maxzoom="16" strokeWidth__1="4:5" strokeWidth_0="4:1"/>
+				<case maxzoom="17" strokeWidth__1="4:7.5" strokeWidth_0="4:3"/>
+				<case minzoom="18" strokeWidth__1="4:9" strokeWidth_0="4:5"/>
+			</apply_if>
+			<apply_if layer="-1" minzoom="15" pathEffect__1="6_4" color__1="#333333" color_0="#ffffff">
+				<case maxzoom="15" strokeWidth__1="4:4" strokeWidth_0="4"/>
+				<case maxzoom="16" strokeWidth__1="4:5" strokeWidth_0="4:1"/>
+				<case maxzoom="17" strokeWidth__1="4:7.5" strokeWidth_0="4:3"/>
+				<case minzoom="18" strokeWidth__1="4:9" strokeWidth_0="4:5"/>
 			</apply_if>
 		</switch>
 
