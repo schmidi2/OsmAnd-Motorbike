@@ -561,12 +561,7 @@
 			</case>
 			
 			<switch textColor="#654321" textWrapWidth="25">
-				<switch minzoom="12" tag="natural" value="peak" textItalic="true">
-					<case maxzoom="13" textSize="12" textOrder="10"/>
-					<case maxzoom="14" nameTag2="ele" textSize="12" textOrder="10"/>
-					<case maxzoom="16" nameTag2="ele" textSize="13" textOrder="15"/>
-					<case minzoom="17" nameTag2="ele" textSize="16" textOrder="15"/>
-				</switch>
+				<case minzoom="14" tag="natural" value="peak" textItalic="true" nameTag2="ele" textSize="12" textOrder="10"/>
 				<case minzoom="16" tag="natural" value="cave_entrance" textSize="12" textOrder="15"/>
 				<case minzoom="13" tag="natural" value="volcano" textSize="14" textOrder="3"/>
 				<apply_if engine_v1="true" textDy="7"/>
@@ -780,20 +775,12 @@
 			<switch textColor="#2375aa" textHaloColor="#ddf1fd">
 				<case minzoom="3" tag="place" value="ocean" textSize="12" textWrapWidth="20" textOrder="3"/>
 				<case minzoom="5" tag="place" value="sea" textSize="12" textWrapWidth="20" textOrder="5"/>
-				<case minzoom="6" tag="natural" value="water" textSize="12" textWrapWidth="20" textOrder="10"/>
+				<case minzoom="12" tag="natural" value="water" textSize="12" textWrapWidth="20" textOrder="10"/>
 				<case minzoom="8" tag="natural" value="bay" textSize="12" textWrapWidth="17" textOrder="10"/>
-				<case minzoom="13" tag="waterway" value="stream" textSize="12" textOnPath="true" textOrder="15"/>
-				<case minzoom="13" tag="waterway" value="wadi" textSize="12" textOnPath="true" textOrder="15"/>
-				<case minzoom="11" tag="waterway" value="river" textSize="12" textOnPath="true" textMinDistance="80" textOrder="10"/>
-				<case minzoom="13" tag="waterway" value="canal" textSize="12" textOnPath="true" textMinDistance="80" textOrder="10"/>
-				<case minzoom="15" tag="waterway" value="dam" textSize="12" textWrapWidth="20" textOnPath="true" textOrder="15"/>
-				<case minzoom="15" tag="waterway" value="dock" textSize="12" textOnPath="true" textOrder="15"/>
-				<case minzoom="15" tag="waterway" value="ditch" textSize="12" textOnPath="true" textOrder="15"/>
-				<case minzoom="15" tag="waterway" value="drain" textSize="12" textOnPath="true" textOrder="15"/>
+				<case minzoom="12" tag="waterway" value="dam" textSize="12" textWrapWidth="20" textOnPath="true" textOrder="15"/>
 
-				<case minzoom="13" tag="landuse" value="water" textSize="12" textWrapWidth="20"/>
-				<case minzoom="13" tag="landuse" value="reservoir" textSize="12" textWrapWidth="20"/>
-				<case minzoom="13" tag="landuse" value="basin" textSize="12" textWrapWidth="20"/>
+				<case minzoom="14" tag="waterway" value="river" textSize="12" textOnPath="true" textMinDistance="80" textOrder="10"/>
+				<case minzoom="14" tag="waterway" value="canal" textSize="12" textOnPath="true" textMinDistance="80" textOrder="10"/>
 
 				<case minzoom="3" tag="ferry_route" value="ferry" textSize="14" textColor="#9d6c9d" textWrapWidth="35" nameTag="ferry_route_ref"/>
 			</switch>
