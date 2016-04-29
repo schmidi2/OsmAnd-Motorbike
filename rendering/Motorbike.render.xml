@@ -650,7 +650,7 @@
 			</switch>
 
 			<switch textColor="#333333" textHaloColor="#ccffffff" textWrapWidth="20" textHaloRadius="2">
-				<case minzoom="11" textSize="15" tag="place" value="suburb" textItalic="true" textOrder="3" intersectionMargin="25"/>
+				<case minzoom="13" textSize="15" tag="place" value="suburb" textItalic="true" textOrder="5" intersectionMargin="25"/>
 				<case minzoom="13" textSize="13" tag="place" value="neighbourhood" textOrder="13"/>
 				<apply_if nightMode="true" textColor="#cccccc" textHaloColor="#bb444444"/>
 			</switch>
@@ -660,7 +660,7 @@
 				<case minzoom="11" tag="place" value="allotments" textSize="13" textOrder="12"/>
 				<case minzoom="11" tag="place" value="farm" textSize="13" textOrder="12"/>
 				<case minzoom="13" tag="place" value="isolated_dwelling" textSize="13" textOrder="13"/>
-				<case minzoom="11" tag="place" value="locality" textSize="11" textColor="#666666" textOrder="15"/>
+				<case minzoom="13" tag="place" value="locality" textSize="11" textColor="#666666" textOrder="15"/>
 				<case minzoom="11" tag="place" value="island" textSize="14" textOrder="10"/>
 				<apply_if nightMode="true" textColor="#cccccc" textHaloColor="#aa444444"/>
 			</switch>
