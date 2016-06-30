@@ -10,6 +10,7 @@ OsmAnd customizations for Motorbike use.
 **_This software is currently in alpha state and therefore cannot yust be installed and used. Help and ideas are welcome._**
 
 
+
 ## Repository Layout
 
 **rendering/Motorbike.render.xml**
@@ -77,6 +78,15 @@ Compass
 *  E.g. race circuits, view points, mountain pass, etc.
 
 
+**Plugin "Switch VIEW"**
+Klick screen to change VIEW
+ - Near View Zoom
+ - Wide View Zoom
+ - POI view
+ - Travel Routing View Fullscreen
+
+
+
 ## Installation instructions
 
 1.  Install Android
@@ -87,6 +97,7 @@ Compass
 4.  Install Rendering
 5.  Install Routing
 
+
   
 ## Panasonic Toughpad JT-B1
 On Motorbike my *Navigation Assistant* is a Panasonic Toughpad JT-B1. The sceen of this waterproof tablet is matted and has a good brightness to use in direct sunlight. And it runs Android so you can choose your apps and customize them the way you want. Sadly, this seems to be the only device matching my requirements at the moment.
@@ -94,6 +105,7 @@ On Motorbike my *Navigation Assistant* is a Panasonic Toughpad JT-B1. The sceen 
 A new Panasonic Toughpad is very expensive, but you will find some used devices on eBay and others.
 
 If you know similar devices, please let me know.
+
 
 
 ## Links
